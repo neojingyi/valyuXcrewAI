@@ -1,7 +1,9 @@
 import requests
 import os
 
-class ValyuTool:
+class ValyuTool(BaseTool):
+    def _run(self,query,*args,**kwargs):
+        return self.fetch_knowledge(query)
     def __init__(self):
         self.api_key=os.getenv("VALYU_API_KEY")
 
