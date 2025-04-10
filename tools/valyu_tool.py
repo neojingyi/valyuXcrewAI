@@ -8,7 +8,7 @@ class ValyuTool:
     def fetch_knowledge(self,query):
         url="https://api.valyu.network/v1/knowledge"
         headers = {
-            "x-api-key": "self.api_key",
+            "x-api-key": self.api_key,
             "Content-Type": "application/json"
             }
         payload = {
