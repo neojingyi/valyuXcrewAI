@@ -1,16 +1,20 @@
 import requests
 import os
+from crewai.tools import BaseTool
+from pydantic import BaseModel, Field
+
+class ValyuToolInput(BaseModel):
+    query: str = Field(..., description="The user's question to be answered using the Valyu API")
 
 class ValyuTool(BaseTool):
     def _run(self,query,*args,**kwargs):
         return self.fetch_knowledge(query)
-    def __init__(self):
-        self.api_key=os.getenv("VALYU_API_KEY")
 
-    def fetch_knowledge(self,query):
+    def _run(self,query:str)-> str:
+        api_key=os.getenv("VALYU_API_KEY")
         url="https://api.valyu.network/v1/knowledge"
         headers = {
-            "x-api-key": self.api_key,
+            "x-api-key": api_key,
             "Content-Type": "application/json"
             }
         payload = {
