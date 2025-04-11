@@ -15,7 +15,7 @@ def FetchKnowledgeTask(query):
         task_description = f"The user asked: '{query}'. Answering it without using external tools."
     return Task(
         description=task_description,
-        expected_output="A well explained, fact based answer.",
+        expected_output="A concise, factual answer in 3-4 short sentences",
         tools=[],
         agent=KnowledgeAgent
     )
