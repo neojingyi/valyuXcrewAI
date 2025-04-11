@@ -8,13 +8,21 @@ load_dotenv()
 
 def main():
     print("Ask me anything (type 'exit' to quit)\n")
+    agents = []
+    tasks = []
     while True:
         query = input("> ")
         if query.lower() in ['exit','quit']:
             print("Bye!")
             break
-        task=FetchKnowledgeTask(query)
-        crew=Crew(agents=[task.agent],tasks=[task],verbose=True,memory=True)
+        task = FetchKnowledgeTask(query)
+        MAX_HISTORY = 2
+        agents.append(task.agent)
+        tasks.append(task)
+        if len(tasks) > MAX_HISTORY:
+            agents = agents[-MAX_HISTORY:]
+            tasks = tasks[-MAX_HISTORY:]
+        crew = Crew(agents=agents, tasks=tasks, verbose=True, memory=True)
         result = crew.kickoff()
         print("\n Answer: \n", result)
 
