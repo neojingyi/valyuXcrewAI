@@ -81,14 +81,17 @@ Despite its significance, GDP has limitations since it does not capture income i
 
 ### 1. Error Handling: 
 There is no fallback mechanism for cases when the Valyu API fails (e.g., due to network issues or invalid API keys).  
+
 *Future: Implement robust error handling, including retries and alternative flows.*
 
 ### 2. Multi-Agent Strategy:
 The current setup uses a single CrewAI agent.
+
 *Future: Explore multi-agent coordination and task delegation for even richer interactions.*
 
 ### 3. Interface Enhancements:
 The tool is presently CLI-only.
+
 *Future: Develop a graphical or web based interface and improve query validation..*
 
 ---
