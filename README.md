@@ -90,6 +90,7 @@ The current setup uses a single CrewAI agent.
 ### 3. Interface Enhancements:
 The tool is presently CLI-only.
 *Future: Develop a graphical or web based interface and improve query validation..*
+
 ---
 
 ## 🧾 Credits
