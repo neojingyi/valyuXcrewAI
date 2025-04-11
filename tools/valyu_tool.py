@@ -7,7 +7,10 @@ from valyu import Valyu
 class ValyuToolInput(BaseModel):
     query: str = Field(..., description="The user's question to be answered using the Valyu API")
 
+
 def valyu_tool_runner(query: str) -> str:
+    global valyu_tool_used
+    valyu_tool_used = True
     api_key = os.getenv("VALYU_API_KEY")
     url = "https://api.valyu.network/v1/knowledge"
     headers = {
@@ -27,6 +30,7 @@ def valyu_tool_runner(query: str) -> str:
         "query_rewrite": True,
         "max_price": 123
     }
+
 
     try:
         response = requests.post(url, json=payload, headers=headers)
