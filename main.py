@@ -1,12 +1,6 @@
 from crewai import Crew
 from tasks.fetch_knowledge_task import FetchKnowledgeTask
 from dotenv import load_dotenv
-from crewai_tools import (
-    DirectoryReadTool,
-    FileReadTool,
-    SerperDevTool,
-    WebsiteSearchTool
-)
 
 load_dotenv()
 

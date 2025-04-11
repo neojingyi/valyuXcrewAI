@@ -1,6 +1,6 @@
 # 📚 ValyuXcrewAI: Factual Assistant Powered by Valyu + CrewAI
 
-A command-line tool that allows users to ask factual questions and get reliable answers retrieved from Valyu’s `/knowledge` API, coordinated by a CrewAI agent. Built for the NUS internship technical challenge.
+A command line tool that allows users to ask factual questions and get reliable answers retrieved from Valyu’s `/knowledge` API, coordinated by a CrewAI agent.
 
 ---
 
@@ -20,7 +20,7 @@ The agent uses the tool internally to fetch responses and return clean, human-fr
 
 ---
 
-## ⚙️ Setup and Install Instructions
+## Setup and Install Instructions
 
 ### 1. Clone the repository
 ```bash
@@ -50,9 +50,6 @@ OPENAI_API_KEY=sk-...
 VALYU_API_KEY=your_valyu_key_here
 ```
 
-- You can get your OpenAI key from: https://platform.openai.com/account/api-keys  
-- Valyu API credentials are assumed to be provided for this test
-
 ---
 
 ## 🧪 How It Works
@@ -81,7 +78,7 @@ Gross Domestic Product (GDP) is the total monetary or market value of all the fi
 
 - ❌ No fallback if Valyu API fails (e.g. network errors, bad auth)  
 - ❌ Only one agent; no task delegation or multi-agent strategy  
-- ❌ Currently CLI only — no GUI or web interface  
+- ❌ no GUI or web interface  
 - ✅ Future: Add logging, improve validation, retry logic, and a simple frontend
 
 ---
