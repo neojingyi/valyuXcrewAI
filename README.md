@@ -69,7 +69,10 @@ Ask me a question:
 > What is GDP?
 
 🎯 Answer:
-Gross Domestic Product (GDP) is the total monetary or market value of all the finished goods and services produced within a country's borders in a specific time period.
+Gross Domestic Product (GDP) is a fundamental economic metric that reflects the total monetary value of all final goods and services produced within a country’s borders in a specific time period, typically annually or quarterly. GDP serves as a comprehensive measure of a nation’s overall economic activity and is a critical indicator of economic health. Here are the key components and implications of GDP:
+.
+.
+.
 ```
 
 ---
@@ -77,7 +80,7 @@ Gross Domestic Product (GDP) is the total monetary or market value of all the fi
 ## ⚠️ Limitations & Future Improvements
 
 - ❌ No fallback if Valyu API fails (e.g. network errors, bad auth)  
-- ❌ Only one agent; no task delegation or multi-agent strategy  
+- ❌ Only one agent (no task delegation or multi-agent strategy)  
 - ❌ no GUI or web interface  
 - ✅ Future: Add logging, improve validation, retry logic, and a simple frontend
 
