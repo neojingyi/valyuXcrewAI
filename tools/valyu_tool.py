@@ -2,16 +2,15 @@ import requests
 import os
 from crewai.tools.structured_tool import CrewStructuredTool
 from pydantic import BaseModel, Field
-from valyu import Valyu
 
 class ValyuToolInput(BaseModel):
     query: str = Field(..., description="The user's question to be answered using the Valyu API")
 
-
 def valyu_tool_runner(query: str) -> str:
-    global valyu_tool_used
-    valyu_tool_used = True
     api_key = os.getenv("VALYU_API_KEY")
+    if not api_key:
+        return "Missing VALYU_API_KEY environment variable."
+
     url = "https://api.valyu.network/v1/knowledge"
     headers = {
         "x-api-key": api_key,
@@ -40,18 +39,24 @@ def valyu_tool_runner(query: str) -> str:
         if not data.get("results"):
             return "❌ No results found."
         summaries = []
-        for result in data["results"][:3]:
+        for result in data["results"][:2]:
             title = result.get("title", "Untitled")
-            content = result.get("content", "")[:300].strip()
+            content = result.get("content", "")[:100].strip()
             url = result.get("url", "#")
             summaries.append(f"🔹 **{title}**\n{content}...\n🔗 [Read more]({url})\n")
 
         return "\n".join(summaries)
 
+    except requests.exceptions.Timeout:
+        return "Valyu API request timed out."
+    except requests.exceptions.ConnectionError:
+        return "Network connection error while calling Valyu API."
+    except requests.exceptions.HTTPError as http_err:
+        return f"HTTP error occurred: {http_err}"
     except Exception as e:
-        return f"❌ Error calling Valyu API: {str(e)}"
+        return f"Unexpected error: {str(e)}"
+    
 
-# Register the function as a CrewAI-compatible tool
 def create_valyu_tool():
     return CrewStructuredTool.from_function(
         name="Valyu Knowledge Tool",

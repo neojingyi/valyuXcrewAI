@@ -1,5 +1,4 @@
 from crewai import Agent
-from tools.valyu_tool import create_valyu_tool
 
 KnowledgeAgent = Agent(
     role='Information Provider',
